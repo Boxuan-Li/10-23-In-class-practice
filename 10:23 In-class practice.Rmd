@@ -44,3 +44,33 @@ html_nodes(cost_living_xml, css = "table")
 nyc_cost_table = (cost_living_xml %>% html_nodes(css = "table"))[[2]] %>%
   html_table(header = T)
 ```
+
+# HP_SS cast
+```{r}
+url3 <- "http://www.imdb.com/title/tt0241527/"
+
+hpss_xml <- read_html(url3)
+
+hpss_cast <- hpss_xml %>%
+  html_nodes(css = ".itemprop .itemprop") %>%
+  html_text()
+```
+
+# Toothbrush review
+```{r}
+url4 <- "https://www.amazon.com/Philips-Sonicare-rechargeable-toothbrush-HX6211/product-reviews/B00YAR7ZFM/ref=cm_cr_arp_d_viewopt_srt?ie=UTF8&reviewerType=all_reviews&sortBy=recent&pageNumber=1"
+
+toothbrush_xml <- read_html(url4)
+
+toothbrush_review <- toothbrush_xml %>%
+  html_nodes(css = ".a-color-base") %>%
+  html_text()
+toothbrush_review
+
+toothbrush_REstar <- toothbrush_xml %>%
+  html_nodes(css = "#cm_cr-review_list .a-icon-alt") %>% #?????
+  html_text()
+toothbrush_REstar
+```
+
+
