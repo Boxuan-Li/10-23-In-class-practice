@@ -32,3 +32,15 @@ names(table_marj)
 table_marj <- table_marj[-1,] %>%
   as_tibble()
 ```
+
+# exercise
+```{r}
+url2 <- "https://www.bestplaces.net/cost_of_living/city/new_york/new_york"
+
+cost_living_xml <- read_html(url2)
+
+html_nodes(cost_living_xml, css = "table")
+
+nyc_cost_table = (cost_living_xml %>% html_nodes(css = "table"))[[2]] %>%
+  html_table(header = T)
+```
