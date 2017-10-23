@@ -68,7 +68,7 @@ toothbrush_review <- toothbrush_xml %>%
 toothbrush_review
 
 toothbrush_REstar <- toothbrush_xml %>%
-  html_nodes(css = "#cm_cr-review_list .a-icon-alt") %>% #?????
+  html_nodes(css = "#cm_cr-review_list .review-rating") %>%
   html_text()
 toothbrush_REstar
 ```
