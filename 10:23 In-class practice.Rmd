@@ -9,6 +9,7 @@ output: html_document
 library(tidyverse)
 library(rvest)
 library(httr)
+library(janitor)
 ```
 
 ```{r}
@@ -73,4 +74,18 @@ toothbrush_REstar <- toothbrush_xml %>%
 toothbrush_REstar
 ```
 
+
+# Getting water data via the API.
+```{r}
+nyc_water = GET("https://data.cityofnewyork.us/resource/waf7-5gvc.csv") %>%
+  content("parse")
+```
+
+# Getting the same data via the JASON.
+```{r}
+nyc_water = GET("https://data.cityofnewyork.us/resource/waf7-5gvc.json") %>% 
+  content("text") %>%
+  jsonlite::fromJSON() %>%
+  as_tibble()
+```
 
